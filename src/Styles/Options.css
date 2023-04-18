@@ -1,0 +1,280 @@
+
+#options-principal{  
+    border-radius: 5px;    
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 500px;
+}
+.userInformation{
+    background-color:rgba(255, 255, 255, 0.87); 
+    box-shadow: 0px 0px 6px 2px rgba(202, 202, 202, 0.87);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;   
+    
+}
+.user-contacts{
+    display: flex;
+    flex-direction: column;    
+}
+.user-contacts>h1{
+    margin-bottom: 0px;
+    color: rgba(61, 60, 78, 0.863)
+}
+.user-contacts>p{
+    margin-top: 0px;
+    font-weight: 600;
+    color: rgba(119, 111, 111, 0.87);
+}
+.userInformation>.material-symbols-outlined.setting-account{
+    color:rgb(141, 141, 141);
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
+    padding-block-start: 20px;
+    padding-block-end: 0px;
+    font-size: 4em;
+}
+.list-options{
+    background-color:rgba(255, 255, 255, 0.87);     
+    box-shadow: 0px 0px 6px 2px rgba(202, 202, 202, 0.87);
+    border-radius: 5px;        
+    display: flex;        
+    flex-direction: column;
+    margin-top: 15px;
+}
+.options{
+    background: white;    
+    border-bottom: 2px solid rgba(105, 105, 105, 0.425);    
+    color:  rgb(116, 112, 112);
+    cursor: pointer;    
+    font-size: 1em;
+    font-weight: bold;    
+    list-style: none;
+    margin-top:5px ;
+    margin-bottom: 5px;
+    padding: 10px;
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
+    transition: all 0.1s ease;    
+}
+.options:hover{
+    background-color:  rgb(52, 73, 94);;
+    color:whitesmoke;
+}
+.options:hover>.material-symbols-outlined:where(.change-password,
+.change-mail,.new-user,){
+    color:whitesmoke;
+}
+.material-symbols-outlined:where(.change-password,
+.change-mail,.new-user){
+    color: rgb(52, 73, 94);
+    position: relative;
+    top: 5px;
+}
+.material-symbols-outlined:where(.change-password,
+.change-mail,.new-user){    
+    position: relative;
+    top: 5px;
+}
+.icon-person,.icon-email{
+    color: rgb(47, 72, 97);
+    margin: 0;
+    margin-right: 10px;
+  }
+.modal-pass{
+    background-color:rgba(255, 255, 255, 0.87);     
+    box-shadow: 0px 0px 6px 2px rgba(202, 202, 202, 0.87);
+    border-radius: 5px;        
+    display: flex;        
+    flex-direction: column;
+    margin-top: 15px;
+}
+.form-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    margin: 10px 30px;  
+}
+.form-options>.inputs-options{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-bottom: 2px solid rgb(47, 72, 97);
+}
+.form-options>.inputs-options>input{
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 15px;
+    border-radius: 4px;
+    color: rgb(59, 69, 80);        
+    border: none;
+    margin: 0.5px;
+    transition: all 0.1s ease;
+}
+
+.form-options>.inputs-options>input::placeholder{
+    color: rgb(59, 69, 80);       
+}
+
+.form-options>.inputs-options>input:focus,.form-options>.inputs-options>input:hover{
+    outline: none;    
+    width: 160px;
+    transition: all 0.2s ease;
+}  
+
+.form-options>.btns-options>:where(#cancel-options,#enviar-options){
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60px;
+    height: 25px;
+    border-radius: 4px;
+    color: whitesmoke;
+    border:none;
+    background-color:rgb(52, 73, 94);
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.form-options>.btns-options>#cancel-options{
+    color: whitesmoke;
+    background-color:rgb(177, 43, 43);
+    transition: all 0.1s ease;
+}
+  
+.form-options>.btns-options>#enviar-options:hover{
+      border-color: rgb(40, 92, 143);
+      background-color:rgb(40, 92, 143);
+      transition: all 0.1s ease;
+}
+
+.form-options>.btns-options>#cancel-options:hover{
+    background-color:rgb(139, 40, 40);
+    border-color:rgb(139, 40, 40);
+    transition: all 0.1s ease;
+}
+
+.alert-options,
+.alert-options.check{  
+    background: rgb(245, 245, 245);
+    padding: 20px 40px;
+    min-width: 420px;      
+    position: fixed;
+    right: 0px;
+    top: 25px;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 10px solid rgb(212, 63, 63);
+    opacity: 1;      
+    transition: all 0.2s ease;
+}
+.alert-options.check{  
+    border-left: 10px solid rgb(26, 88, 40);        
+}
+.alert-options.showAlert{
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert-options.show{
+    animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+.alert-options.hide{
+    animation: hide-slide 1s ease forwards;
+}
+@keyframes hide-slide {
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(0%);
+    }
+    80%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(100%);
+    } 
+
+}
+
+#error{
+    position:absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-40%);
+    color:  rgb(212, 63, 63);
+    font-size: 25px;
+    transition: all 0.2s ease;
+}
+#check{
+    position:absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-40%);
+    color:  rgb(26, 88, 40);
+    font-size: 25px;
+    transition: all 0.2s ease;
+}
+.alert-options .msg,.alert-options .msg.check{
+  margin: 0;
+  margin-left: 10px;
+  padding: 0 20px;
+  font-size: 18px;
+  color: rgb(233, 69, 69);
+  transition: all 0.2s ease;
+    
+}
+
+.alert-options .msg.check{
+    color:  rgb(26, 88, 40);
+}
+
+.alert-options.show > .close-btn,.alert-options.show > .close-btn.check{
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(233, 69, 69);
+    padding: 20px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.alert-options.show > .close-btn.check{
+    background: rgb(26, 88, 40);
+}
+.alert-options.show > .close-btn.check:hover{
+    background: rgb(24, 151, 53);
+    transition: all 0.2s ease;
+}
+
+.alert-options.show >.close-btn:hover{     
+     background: rgb(214, 8, 8);
+     transition: all 0.2s ease;
+}
+.close-btn > .material-symbols-outlined{
+    color: rgb(245, 245, 245);
+    font-size: 22px;
+    line-height: 40px;
+    transition: all 0.2s ease;
+}

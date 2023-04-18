@@ -1,0 +1,106 @@
+.principal{
+    margin: auto;
+    margin-top: 50px;
+    width: 300px;    
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 1px #a6a7a7;
+    border-radius: 10px;
+}
+.principal>.header-update,
+.principal>.header-register{
+    background-color: rgb(52, 73, 94);    
+    border-radius: 10px;  
+    border-bottom-left-radius: 0px;  
+    border-bottom-right-radius: 0px;  
+    margin: 0px;
+}
+
+.register{
+    background-color: rgb(52, 73, 94);
+    color: whitesmoke;    
+    width: 300px;    
+    text-align: center;
+}
+.update{
+    background-color: rgb(20, 129, 202);
+    color: whitesmoke;
+    margin: auto;
+    padding: 10px;
+    text-align: center;    
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.material-symbols-outlined:where(.icon-phone,
+.icon-edad){        
+    color: rgb(52, 73, 94);
+    position: relative;       
+}
+.material-symbols-outlined.icon-edad{
+ font-size: 2em;    
+}
+#age{    
+    position: relative;
+    top: 5px;
+}
+
+.form>button{
+    width: 60px;
+    height: 25px;
+    border-radius:3px;
+    color: whitesmoke;
+    border: 1px solid rgb(52, 73, 94);
+    background-color:rgb(52, 73, 94);
+}
+.form>button:hover{
+    background-color: rgb(80, 113, 147);
+    border: 1px solid rgb(52, 73, 94);    
+}
+
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    margin: 10px 30px;  
+}
+.form>.inputs-options{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-bottom: 2px solid rgb(47, 72, 97);
+}
+.form>.inputs-options>input,.form>.inputs-options>select{
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 15px;
+    border-radius: 4px;
+    color: rgb(59, 69, 80);     
+    outline: none;   
+    background-color: transparent;
+    border: none;
+    margin: 0.5px;
+    transition: all 0.1s ease;
+  }
+.form>.inputs-options>input::placeholder,
+.form>.inputs-options>select::placeholder{
+    color: rgb(59, 69, 80);       
+  }
+ .form->.inputs-options>input:focus,
+ .form>.inputs-options>input:hover,
+ .form->.inputs-options>select:focus,
+ .form>.inputs-options>select:hover{
+    outline: none;    
+    width: 160px;
+    transition: all 0.2s ease;
+  }  

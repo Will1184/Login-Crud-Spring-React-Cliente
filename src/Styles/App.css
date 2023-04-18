@@ -1,0 +1,861 @@
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+.header-nav{
+    display: flex;
+    width: 100%;
+    margin: 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+/* Navegacion
+ del header */
+.navegacion{
+    background-color: rgb(52, 73, 94);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%;
+    position: relative;
+    padding: 5px;    
+}
+.navegacion>ul{
+    list-style-type: none;
+    float: left;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    background-color: rgb(52, 73, 94);
+}
+.navegacion>ul >li {
+    font-weight: bolder;
+    float: left;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+/*Diseño y animacion
+Navegacion del Menu de opciones*/
+
+
+.btn-menu{    
+    display: block;
+    padding: 3px;
+    cursor: pointer;
+}
+.btn-menu:hover >.material-symbols-outlined.menu{
+    background-color: whitesmoke;
+    color: rgb(52, 73, 94);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.remove-btn-menu{
+    display: block;
+    padding: 3px;
+    cursor: pointer;       
+}
+.material-symbols-outlined.close-menu{
+    background-color: transparent;
+    color: whitesmoke;
+}
+.remove-btn-menu:hover >.material-symbols-outlined.close-menu{
+    background-color: whitesmoke;
+    color: rgb(52, 73, 94);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.material-symbols-outlined:where(.menu,.close-menu){
+    font-size: 2.3em;    
+}
+
+.home{
+    display: block;
+    padding: 1px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.home>a{
+    text-decoration: none;
+}
+.home:hover >a>.material-symbols-outlined.home{
+    background-color: whitesmoke;
+    color: rgb(52, 73, 94);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    
+}
+.material-symbols-outlined.home{
+    font-size: 2.2em;
+    color: whitesmoke;
+    
+}
+
+.nav-menu {
+    background: white;     
+    border-radius: 10px;
+    color: rgb(52, 73, 94);
+    display: flex;
+    flex-direction: column;
+    float: left;
+    height: auto;  
+    justify-items: end;
+    list-style-type: none;
+    margin: 0px;
+    position: absolute;    
+    padding: 20px;
+    padding-top: 0;
+    right: 20px;   
+    top: 50px;     
+    width: 130px;                     
+}
+
+.nav-menu>h1{       
+    border-top: 5px solid;     
+    border-image: linear-gradient(100deg, rgb(38, 70, 102), rgb(195, 201, 206))1;
+    text-align: center;
+}
+.nav-menu>li{                
+    cursor: pointer;
+    font-weight: bolder;
+    margin-bottom: 15px;
+    text-align: center;
+    text-align: left;
+}
+.nav-menu>li>a{
+    text-decoration: none;    
+    color: rgb(52, 73, 94);
+}
+.nav-menu>li>span:hover, .nav-menu>li>a:hover{            
+    border-bottom: 1px solid;   
+    background-color:  rgb(55, 90, 124); 
+    border-radius: 5px;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+
+.material-symbols-outlined.setting,
+.material-symbols-outlined.logout,
+.material-symbols-outlined.send-email{
+    cursor: pointer;
+    position: relative;
+    top: 4px;    
+}
+
+.nav-menu.show{
+    display: flex;
+    animation: show_slide-menu 0.5s ease forwards;     
+}
+@keyframes show_slide-menu {
+    0%{
+        transform: translateY(-5%);
+    }
+    40%{
+        transform: translateY(1px);
+    }
+    80%{
+        transform: translateY(1px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+/* Diseño del 
+Input de busqueda */
+
+#search{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 70px;
+    transition: all 0.2s ease;
+}
+
+#search:focus,
+#search:hover{
+    position: relative;
+    width: 90px;
+    outline: none;
+    transition: all 0.2s ease;   
+}
+
+
+.data-table{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Navegacion de
+ opciones para la tabla */
+
+.table-options{
+    width: 100px;
+    display: flex;    
+    flex-direction: column;
+    margin: 0;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.table-options>.btn-options{
+    list-style-type: none;
+    float: left;
+    margin: 0;
+    margin-bottom: 4px;
+    padding: 0;
+    overflow: hidden;
+}
+.table-options>ul>li {  
+    font-weight: bolder;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.btn-new,.btn-filter,
+.btn-csv,.btn-mostrar{    
+    color:  rgb(52, 73, 94);
+    font-size: 1em;
+    text-align: center;
+    border: none;
+    background: white;
+    border-radius: 8px;
+    margin-right: 8px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+.btn-csv{
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ 
+}
+.btn-csv>p{font-family: Arial, Helvetica, sans-serif;}
+
+.btn-new>a{
+    color:  rgb(52, 73, 94);      
+    font-size: 1em;   
+    padding-top: 20px;
+    text-decoration: none;
+}
+
+.material-symbols-outlined:where(.add,.dowmload,.table-rows)
+ {
+    color:  rgb(52, 73, 94); 
+    font-size: 1.6em;
+    left: 1.5px;    
+    position: sticky;
+    top: 15px;
+    transition: all 0.1s ease;
+}
+.material-symbols-outlined.filter{
+    position: relative;
+    top: 5px;
+}
+
+.material-symbols-outlined.download{    
+    position: relative;
+    top: 12px;
+}
+
+.material-symbols-outlined.table-rows{
+    font-size: 1.5em;
+    position: relative;    
+    top: 5px;
+    left: -1px;
+}
+
+.btn-new:hover,
+.btn-filter:hover,
+.btn-csv:hover,
+.btn-mostrar:hover{
+    background:  rgb(80, 113, 147);
+    color: white;
+    transition: all 0.1s ease;
+}
+.btn-new:hover .material-symbols-outlined.add,
+.btn-filter:hover .material-symbols-outlined.filter,
+.btn-csv:hover .material-symbols-outlined.material-symbols-outlined.download,
+.btn-new:hover>a,
+.btn-mostrar:hover>span{
+    color: white;
+    transition: all 0.1s ease;
+}
+
+.options-filter {
+    display: none;
+    flex-direction: column;
+    justify-items: center;
+    padding: 20px;
+    margin: 0;
+    margin-left: 5px;
+    background: white;    
+    border-radius: 10px;
+    width: 80px;
+    list-style-type: none;    
+}
+
+.options-filter li {
+    text-align: left;
+    float: left;
+}
+.form-filter p{
+font-size: 0.89em;
+}
+.btn-filter-action{
+background: transparent;
+border: none;
+}
+.btn.close-filter{
+    border-radius: 5px;
+    cursor: pointer;
+    left: 56px;    
+    padding: 15px 18px 0px;
+    position: absolute;
+    top: 0px;
+    text-align: center;   
+    width: 50px;
+}
+
+.material-symbols-outlined.btn-close-filter{
+    color: rgb(228, 50, 50);
+    font-size: 23px;
+    line-height: 0px;    
+}
+.material-symbols-outlined.btn-close-filter:hover{
+    color: rgb(185, 30, 30);
+}
+
+
+/* Diseño y animacion 
+de la opcion filter*/
+.options-filter li>p{
+    color:  rgb(52, 73, 94); 
+}
+.material-symbols-outlined:where(.arrow-up,.arrow-down){
+color:  rgb(52, 73, 94); 
+
+}
+.material-symbols-outlined:where(.arrow-up:hover,.arrow-down:hover){
+    background:  rgb(80, 113, 147);
+    border-radius: 10px;
+    color: white;
+}
+.options-filter.showAlert{
+    opacity: 1;
+    pointer-events: auto;
+}
+.options-filter.show{
+    animation: show_slide-filter 1s ease forwards;   
+    display: flex;      
+}
+@keyframes show_slide-filter {
+    0%{
+        transform: translateX(-100%);
+    }
+    40%{
+        transform: translateX(5%);
+    }
+    80%{
+        transform: translateX(-6%);
+    }
+    100%{
+        transform: translateX(-5px);
+    }
+}
+.options-filter.hide{    
+    display: flex;
+    animation: hide-slide-filter 1s ease forwards;        
+}
+@keyframes hide-slide-filter {
+    0%{
+        transform: translateX(-2px);
+    }
+
+    40%{
+        transform: translateX(10%);
+    }
+    
+    100%{
+        transform: translateX(-200%);
+    }
+    
+}
+
+/* Diseño de la tabla 
+de datos */
+.table{        
+    border: 2px solid rgb(52, 73, 94);
+    box-shadow: 1px 1px 15px 10px rgb(199, 204, 204);
+    margin: auto;
+    margin-top: 0;
+    width:auto;
+    border-collapse: collapse ; 
+ }
+caption{
+    padding: 0.5em;
+}
+th, td{
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;     
+}
+thead{
+    background-color:rgb(52, 73, 94);
+    color: whitesmoke;
+    font-size: 100%;
+    border-bottom: 4px solid rgb(32, 45, 56) ;
+}
+tr:nth-child(even){
+    background-color: rgb(150, 148, 148);
+    font-size: 100%;
+}
+td{
+     border-bottom: 2px solid  rgb(52, 73, 94);
+}
+
+.modificar{
+   width: 70px;
+   height: 50px;
+   background-color:white ;
+   border: none;
+   border-radius: 8px;
+   color: rgb(80, 113, 147);
+   font-weight: bold;
+}
+.modificar>a{
+    color:rgb(80, 113, 147);
+    text-decoration: none;
+    font-weight: bold;
+}
+.eliminar{
+    width: 70px;
+    height: 50px;
+    color: rgb(199, 23, 23);
+    background-color:white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+ }
+ .email{
+    width: 70px;
+    height: 50px;
+    color: rgb(147, 147, 147);
+    background-color:white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+ }
+ .email>a{
+     color: rgb(147, 147, 147);
+     text-decoration: none;
+     font-weight: bold;
+ }
+
+.material-symbols-outlined.delete{
+    font-size: 1.5em;
+    color:  rgb(199, 23, 23);
+    cursor: pointer;
+}
+.material-symbols-outlined.mail{
+    font-size: 1.5em;
+    color:  rgb(145, 145, 145);
+    cursor: pointer;
+}
+.material-symbols-outlined.edit{
+    font-size: 1.5em;
+    color: rgb(80, 113, 147);
+    cursor: pointer;
+}
+.modificar:hover{
+    border:none;
+    background-color:rgb(80, 113, 147);
+    transition: all 0.2s ease;
+}
+.eliminar:hover{
+    border: none;
+    background-color:  rgb(199, 23, 23);
+    color: white;
+    transition: all 0.2s ease;
+}
+.email:hover{
+    background-color:  rgb(145, 145, 145);
+    color: white;
+    transition: all 0.2s ease;
+}
+.email:hover .material-symbols-outlined.mail{    
+    color: white;
+    transition: all 0.2s ease;
+}
+.email:hover>a{
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.eliminar:hover .material-symbols-outlined.delete{
+    color: white;
+    transition: all 0.2s ease;
+}
+.modificar:hover .material-symbols-outlined.edit{
+    color: white;
+    transition: all 0.2s ease;
+}
+.modificar:hover>a{
+    color: white;
+    transition: all 0.2s ease;
+}
+
+/* Diseño y animacion del
+ form Email */
+.alert-send-email{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 44%;
+    right: 10px;
+    width: 300px;
+    border-radius: 8px;
+    padding: 5px;
+    border-top:30px solid rgb(52, 73, 94) ;
+    background: whitesmoke;
+    box-shadow: 0px 2px 20px 2px rgb(145, 145, 145);
+}
+.alert-send-email.minimize{
+    position: fixed;
+    top: 610px;
+    right: 10px;
+}
+#form-email{
+   display: flex;
+   flex-direction: column;
+   list-style-type: none;
+}
+#form-email{
+   display: flex;
+   flex-direction: column;   
+}
+#form-email>label{    
+    width: 10em;
+    position: relative;
+    color: rgb(52, 73, 94) ;
+    position: relative;
+    top: 2px;
+    right: -8px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.94em;
+}
+#form-email>input{
+    width: 215px; 
+    position: relative;
+    top: -16px;
+    right: -70px;
+    border-radius: 5px;
+    color: rgb(41, 41, 41);
+    background-color: rgb(215, 213, 213);
+    border-color: rgb(215, 213, 213);
+    margin: 0px;   
+    margin-bottom: 5px; 
+ }
+ #form-email>textarea{
+    width: 280px;
+    margin: 0px;
+    margin-bottom: 10px;
+    align-self: center;    
+    outline: none;
+    border: none;    
+    background-color: rgb(190, 190, 190);    
+    border-radius: 5px;
+    color: rgb(41, 41, 41);
+ }
+#form-email>button{
+    width: 100px;
+    margin-left: 10px;
+    padding: 5px 1px 5px 1px;
+    align-self: left;
+    background-color: rgb(52, 73, 94);
+    color: whitesmoke;
+    border: none;
+    border-radius: 4px;    
+    cursor: pointer;
+}
+#form-email>button:hover{
+    color:  rgb(52, 73, 94);
+    border: 1px solid rgb(52, 73, 94);
+    background-color: whitesmoke;    
+}
+.btn-send-email{
+ background-color: transparent;
+ position: absolute;
+ right: 10px;
+ top: -25px;
+}
+.btn-send-email:hover{
+    background: rgb(226, 229, 233);   
+    border-radius: 5px;
+}
+.material-symbols-outlined.btn-close-send-email{
+    position: absolute;
+    right: 0px;
+    top: -2px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.material-symbols-outlined.btn-maximize-send-email{
+    display: none;
+    position: absolute;
+    right: 40px;
+    top: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.material-symbols-outlined.btn-minimize-send-email{
+position: absolute;
+right: 40px;
+top: -5px;
+color: whitesmoke;
+cursor: pointer;
+}
+.material-symbols-outlined.btn-close-send-email:hover{
+    background-color:  rgb(199, 23, 23);
+    border: 1px solid rgb(164, 11, 11);
+    border-radius: 6px;
+}
+.alert-send-email.show{
+    animation: show-slide-send-email 0.4s ease forwards;     
+}
+@keyframes show-slide-send-email{
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+.alert-send-email.minimize{    
+    animation: hide-slide-send-email 0.3s ease forwards;        
+}
+@keyframes hide-slide-send-email {
+    0%{
+        transform: translateY(-700%);
+    }
+    100%{
+        transform: translateY(0px)    
+}
+}
+
+
+/* Diseño y animacion de 
+la notificacion para eliminar dato */
+.alert{
+    background: rgb(245, 245, 245);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 150px;
+    left: 38%;
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;   
+    border-top:20px solid  rgb(47, 72, 97) ;    
+}
+
+.alert.show{
+    display: flex;
+    animation: show_slide 1s ease forwards; 
+   
+}
+@keyframes show_slide {    
+    0%{
+        transform: translateY(-100%);
+    }
+}
+.alert.hide{   
+    animation: hide-slide 1s ease forwards; 
+}
+@keyframes hide-slide {
+   100%{
+        transform: translateY(-200%);
+    }
+}
+
+.alert .msg{
+    margin: 20px;
+    font-size: 23px;
+    color: rgb(47, 72, 97);    
+}
+.alert-options-delete{
+display: flex;
+flex-direction: row;
+}
+.btn.confirmation, .btn.close{
+    margin: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 15px 18px 0px;
+    cursor: pointer;
+    width: 110px;
+    height: auto;
+    border-radius: 5px;
+    color: whitesmoke;
+    border: none;
+    transition: all 0.10s ease;
+}
+.btn.confirmation p, .btn.close p{
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+.btn.confirmation{
+    background:  rgb(208, 16, 16);
+}
+.btn.close{
+    background:whitesmoke;
+    color:  rgb(70, 104, 138);
+    border: 1px solid rgb(70, 104, 138);
+    
+}
+.material-symbols-outlined.btn-close-delete,.material-symbols-outlined.check{
+    color:rgb(239, 227, 227);
+    font-size: 33px;
+    line-height: 20px;
+    margin: 0px;
+}
+.material-symbols-outlined.btn-close-delete{
+    color:  rgb(70, 104, 138);
+}
+
+.btn.close:hover,.btn.close:hover>p,.btn.close:hover .material-symbols-outlined.btn-close-delete{
+    color:whitesmoke;
+    background-color: rgb(70, 104, 138);
+    transition: all 0.1s ease;
+}
+
+.btn.confirmation:hover,.btn.close:hover{
+    width: 150px ;
+    transition: all 0.1s ease ;
+}
+.btn.confirmation:hover .material-symbols-outlined.check{
+    color: whitesmoke;
+}
+
+
+/* Diseño del reloj */
+#clocks{
+    position: absolute;
+    right: 20px;
+    top: 70px;
+}
+.digitalClock{
+    margin: 0px;
+    opacity: 0.6;
+}
+#clock{
+    padding: 5px;
+    max-width: 100px;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 0.9em;
+    color:whitesmoke;
+    background: rgb(101, 101, 102);
+    border-radius: 3px;
+}
+
+/* DISEÑO DEL DATATABLE JQUERY */
+/* label de la cantidad de datos a mostrar en la paginacion */
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    color: rgb(97, 97, 97);  
+    font-size: 1.05em;
+  }
+  /* Input select de la cantidad de datos a mostrar en la paginacion */
+  div.dataTables_wrapper div.dataTables_length select {
+    width: 75px;
+    margin: 0px 10px 10px 10px;
+    display: inline-block;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: rgb(97, 97, 97);    
+  }
+  /*El numero de elementos en la paginacion */
+  div.dataTables_wrapper div.dataTables_info {
+    margin: 0px;       
+    margin-top: 5px;
+    font-size: 1em;
+    color:whitesmoke;
+    background: rgb(101, 101, 102);
+    border-radius: 3px;
+    padding: 4px;
+    width: 110px;
+    opacity: 0.7;
+  }
+  /* Botones de la paginacion */
+ div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    position: relative;
+    top: -38.5px;
+    white-space: nowrap;
+    text-align: right;
+    color: rgb(97, 97, 97);
+    font-size: 1em;
+  }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;  
+  }
+  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.previous,div.dataTables_wrapper div.dataTables_paginate a.paginate_button.next {
+     background:rgb(70, 104, 138);
+     color:whitesmoke;
+     border-radius: 5px;   
+     padding: 8px;
+     margin: 0px 10px;   
+  }
+  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.previous:hover,div.dataTables_wrapper div.dataTables_paginate a.paginate_button.next:hover{
+    border:2px solid rgb(70, 104, 138);
+    background: whitesmoke;
+    color: rgb(80, 80, 80);
+    cursor: pointer;
+  }
+  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.current{
+    background:rgb(70, 104, 138);
+    color:whitesmoke;
+    border-radius: 6px;   
+    padding: 2px 6px;
+    margin: 0px 3px;   
+    cursor: pointer;
+  }
+  div.dataTables_wrapper div.dataTables_paginate a.paginate_button{
+    border:1px solid rgb(70, 104, 138);
+    background: whitesmoke;
+    color: rgb(80, 80, 80);
+    border-radius: 6px;   
+    padding: 2px 6px;   
+    margin: 0px 3px;   
+    cursor: pointer;
+  }
+  div.dataTables_wrapper div.dataTables_paginate a.paginate_button:hover{
+    background:rgb(70, 104, 138);
+    color:whitesmoke;  
+  }
+  div.dataTables_wrapper div.dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    padding: 1em 0;  
+  }
+  footer{
+    background: cadetblue;
+  }
