@@ -19,11 +19,8 @@ const Menu =()=>{
         
     })
 
-    const logout = () => {
-
-                const username=localStorage.getItem('username');
-                const user={username};
-                AuthService.userLogout(user).then((response)=>{
+    const logout = () => {           
+                AuthService.userLogout().then((response)=>{
                     console.log(response.data)                    
                     localStorage.removeItem("role")   
                     localStorage.removeItem('token') 

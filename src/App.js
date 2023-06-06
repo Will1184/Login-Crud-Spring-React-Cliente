@@ -1,7 +1,6 @@
-import React from 'react';
+import React,{Fragment }  from 'react';
 import'./Styles/App.css';
 import { BrowserRouter as Router ,Route,Routes} from 'react-router-dom';
-import { Fragment } from 'react';
 import ListPersonas from './component/ListPersonas';
 import CrearPersona from './component/CrearPersona';
 import Login from './component/Login';

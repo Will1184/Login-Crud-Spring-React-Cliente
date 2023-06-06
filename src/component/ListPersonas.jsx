@@ -3,12 +3,10 @@ import PersonaService from '../services/PersonaService'
 import { Link } from 'react-router-dom'
 import { CSVLink } from 'react-csv';
 import Menu from './Menu';
-import Modal from './Modal';
 
 
 const  ListPersonas=() =>{
     const[personas, setPersonas] =useState([]);
-    const[openModal,setOpenModal]=useState(false);
     const[openDelete,setOpenDelete]=useState(false);
     const[optionDelete,setOptionDelete]=useState(false);    
     const[idDelete,setIdDelete]=useState();    
@@ -19,7 +17,9 @@ const  ListPersonas=() =>{
         confirmation();       
         tokenExpired();
     })   
-
+    useEffect(()=>{
+        getPersonas();
+    })   
     const tokenExpired=()=>{                   
         setInterval(()=>{              
             let isLogged=localStorage.getItem("Token");        
@@ -39,7 +39,7 @@ const  ListPersonas=() =>{
                 console.log(error);                     
               }
         }
-
+        
         const searcher=(e)=>{
             setSearch(e.target.value)            
         }
@@ -48,62 +48,15 @@ const  ListPersonas=() =>{
           results = personas;
         } else {
           results = personas.filter((data) =>
-            data.primer_nombre.toLowerCase().includes(search.toLocaleLowerCase())
+            data.nombres.toLowerCase().includes(search.toLocaleLowerCase())
           );
         }
         
 
-        const mostrar=()=>{
-                const m=()=>{
-                    window.location.reload();
-                }
-                if(personas.length === 0){                                                        
-                return <button className='btn-mostrar' onClick={()=>{m()}}>
-                    <span className="material-symbols-outlined table-rows">
-                        table_rows
-                        </span>TABLA
-                       </button>                
-                }
-            }
 
-    useEffect(() => {                 
-            getPersonas();                      
-    },[])
-    
-    const confirmation=()=>{
-        deletePersona()
-        if(openDelete){
-            return<div className="alert show">            
-            <span className="msg">¿Quiere eliminar este registro?</span>                                      
-            <div className="alert-options-delete">
-            <button className="btn confirmation" onClick={()=> {setOptionDelete(true);setOpenDelete(false)}}>
-                 <span className="material-symbols-outlined check">check</span>
-                <p>Yes</p>
-            </button>    
-            <button  className="btn close" onClick={()=> setOpenDelete(false)}>
-            <span className="material-symbols-outlined btn-close-delete">close</span>                    
-            <p>Cancel</p>
-            </button>  
-            </div>
-            </div>
-        }
-    }
-
-    const deletePersona=()=>{
-        if(optionDelete){
-            PersonaService.deleteEmployee(idDelete).then((response)=>{
-                getPersonas();
-                setOptionDelete(false)                              
-              }).catch(error =>{
-                  console.log(error);
-                  setOptionDelete(false)
-              })
-            }
-    }    
-        return(
-            <div>
-                 <Menu/>                 
-               <div className="data-table">            
+        const table=()=>{
+            if(personas.length!==0){
+                return<div className="data-table">            
                  <nav className="table-options">                                   
                     <ul className='btn-options'>                     
                         <li>                            
@@ -132,58 +85,100 @@ const  ListPersonas=() =>{
                                 download                                
                             </span>&nbsp;<p>CSV</p>
                             </CSVLink>
-                        </li>
-                        
-                        <li><button className="btn-filter" onClick={() =>{
-                            setOpenModal(true);
-                        }} >
-                            <span className="material-symbols-outlined filter">filter_alt</span>
-                             FILTER
-                            </button>
-                        </li>                     
-                    </ul>
-                    {openModal && <Modal closeModal={setOpenModal} />}                    
+                        </li>                    
+                    </ul>                                       
                  </nav>
-                
-            <table className="table" id="table-inf">             
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOMBRES</th>                                
-                        <th>APELLIDOS</th>
-                        <th>EDAD</th>
-                        <th>EMAIL</th>
-                        <th>TELEFONO</th>
-                        <th>POSICION</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    results.map(
-                        persona=>
-                        <tr key={persona.id}>
-                            <td>{persona.id}</td>
-                            <td>{persona.primer_nombre}&nbsp;
-                            {persona.segundo_nombre}</td>
-                            <td>{persona.primer_apellido}&nbsp;
-                            {persona.segundo_apellido}</td>
-                            <td>{persona.edad}</td>
-                            <td>{persona.correo_electronico}</td>
-                            <td>{persona.telefono}</td>
-                            <td>{persona.posicion}</td>
-                            <td>                                                            
-                            <button className='modificar'><Link to={`/editPersona/${persona.id}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp; EDIT</Link ></button>
-                            <button className='eliminar' onClick={()=> {setIdDelete(persona.id);setOpenDelete(true)}}><span className="material-symbols-outlined delete">delete_forever</span> DELETE</button>                           
-                            <button className='email'><a href="/crearpersona/:id"><span className="material-symbols-outlined mail">mail</span> SEND</a></button>
-                            </td>                                                          
-                        </tr>                                      
-                    )
-                }                              
-                </tbody>       
-                {confirmation()}                                                                      
-            </table>              
+                 <table className="table" id="table-inf">             
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRES</th>                                
+                    <th>APELLIDOS</th>
+                    <th>EDAD</th>
+                    <th>EMAIL</th>
+                    <th>TELEFONO</th>
+                    <th>POSICION</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+            {
+                results.map(
+                    persona=>
+                    <tr key={persona.id}>
+                        <td>{persona.id}</td>
+                        <td>{persona.nombres}</td>
+                        <td>{persona.apellidos}</td>
+                        <td>{persona.fecha_nacimiento}</td>
+                        <td>{persona.email}</td>
+                        <td>{persona.telefono}</td>
+                        <td>{persona.posicion}</td>
+                        <td>                                                            
+                        <button className='modificar'><Link to={`/editPersona/${persona.id}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp; EDIT</Link ></button>
+                        <button className='eliminar' onClick={()=> {setIdDelete(persona.id);setOpenDelete(true)}}><span className="material-symbols-outlined delete">delete_forever</span> DELETE</button>                           
+                        <button className='email'><a href="/crearpersona/:id"><span className="material-symbols-outlined mail">mail</span> SEND</a></button>
+                        </td>                                                          
+                    </tr>                                      
+                )
+            }                              
+            </tbody>       
+            {confirmation()}                                                                      
+        </table>
             </div>
+                              
+            }
+        }
+
+
+        const mostrar=()=>{
+                const m=()=>{
+                    window.location.reload();
+                }
+                if(personas.length === 0){                                                        
+                return <button className='btn-mostrar' onClick={()=>{m()}}>
+                    <span className="material-symbols-outlined table-rows">
+                        table_rows
+                        </span>TABLA
+                       </button> 
+                }
+            }    
+    
+    const confirmation=()=>{
+        deletePersona()
+        if(openDelete){
+            return<div className="alert show">
+            <span className="msg">¿Quiere eliminar este registro?</span>
+            <div className="alert-options-delete">
+            <button className="btn confirmation" onClick={()=> {setOptionDelete(true);setOpenDelete(false)}}>
+                 <span className="material-symbols-outlined check">check</span>
+                <p>Yes</p>
+            </button>    
+            <button  className="btn close" onClick={()=> setOpenDelete(false)}>
+            <span className="material-symbols-outlined btn-close-delete">close</span>                    
+            <p>Cancel</p>
+            </button>  
+            </div>
+            </div>
+        }
+    }
+
+    const deletePersona=()=>{
+        if(optionDelete){
+            PersonaService.deleteEmployee(idDelete).then((response)=>{
+                getPersonas();
+                setOptionDelete(false)                              
+              }).catch(error =>{
+                  console.log(error);
+                  setOptionDelete(false)
+              })
+            }
+    }    
+        return(
+            <div>
+                 <Menu/>
+                 <>{mostrar()}</>
+                 <>{table()}</>                 
+               
             </div>           
         )
     }

@@ -7,12 +7,10 @@ import PersonaService from '../services/PersonaService';
 export default function CrearPersona(){
 
     const[posicion,setPosicion]=useState("");
-    const[primer_nombre,setPrimerNombre]=useState("");
-    const[segundo_nombre,setSegundoNombre]=useState("");
-    const[primer_apellido,setPrimerApellido]=useState("");
-    const[segundo_apellido,setSegundoApellido]=useState("");
-    const[edad,setEdad]=useState("");
-    const[correo_electronico,setCorreElectronico]=useState("");
+    const[nombres,setNombres]=useState("");
+    const[apellidos,setApellidos]=useState("");
+    const[fecha_nacimiento,setFecha_nacimiento]=useState("");
+    const[email,setEmail]=useState("");
     const[telefono,setTelefono]=useState();
     const {id}=useParams("");
     const navigate=useNavigate();
@@ -22,12 +20,10 @@ export default function CrearPersona(){
         if (id) {
           PersonaService.getPersonaById(id)
             .then((response) => {
-              setPrimerNombre(response.data.primer_nombre);
-              setSegundoNombre(response.data.segundo_nombre);
-              setPrimerApellido(response.data.primer_apellido);
-              setSegundoApellido(response.data.segundo_apellido);
-              setEdad(response.data.edad);
-              setCorreElectronico(response.data.correo_electronico);
+              setNombres(response.data.nombres);
+              setApellidos(response.data.apellidos);            
+              setFecha_nacimiento(response.data.fecha_nacimiento);
+              setEmail(response.data.email);
               setTelefono(response.data.telefono);
               setPosicion(response.data.posicion);
             })
@@ -51,8 +47,7 @@ export default function CrearPersona(){
     }
     const onSubmit=(e)=>{        
         e.preventDefault();
-        const persona={primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,
-            edad,correo_electronico,telefono,posicion};
+        const persona={nombres,apellidos,fecha_nacimiento,email,telefono,posicion};
             
             if(id){
                 PersonaService.updatePersona(id,persona).then((response)=>{
@@ -80,58 +75,38 @@ export default function CrearPersona(){
             <span className="material-symbols-outlined icon-person">person</span>
             <input 
             type="text" 
-            name="primer_nombre" 
-            id="firstName" placeholder="Primer nombre"
-            value={primer_nombre} 
-            onChange={(e)=> setPrimerNombre(e.target.value)}/>
+            name="nombres" 
+            id="names" placeholder="Nombres"
+            value={nombres} 
+            onChange={(e)=> setNombres(e.target.value)}/>
             </div>        
 
             <div className="inputs-options">
             <span className="material-symbols-outlined icon-person">person</span>
             <input type="text" 
-            name="segundo_nombre" 
-            id="secondName" placeholder="Segundo nombre"
-            value={segundo_nombre} 
-            onChange={(e)=> setSegundoNombre(e.target.value)}/>
-            </div>
-
-            <div className="inputs-options">
-            <span className="material-symbols-outlined icon-person">person</span>
-            <input 
-            type="text" 
-            name="primer_apellido"
-            id="lastName1" placeholder="Primer apellido"
-            value={primer_apellido}
-            onChange={(e)=> setPrimerApellido(e.target.value)}/>
-            </div>
-
-            <div className="inputs-options">
-            <span className="material-symbols-outlined icon-person">person</span>
-            <input 
-            type="text" 
-            name="segundo_apellido" 
-            id="lastName2" placeholder="Segundo apellido "
-            value={segundo_apellido} 
-            onChange={(e)=> setSegundoApellido(e.target.value)}/>
+            name="apellidos" 
+            id="lastnames" placeholder="Apellidos"
+            value={apellidos} 
+            onChange={(e)=> setApellidos(e.target.value)}/>
             </div>
 
             <div className="inputs-options">
             <span class="material-symbols-outlined icon-edad">123</span>
-            <input type="number" 
-            name="edad" 
+            <input type="date" 
+            name="fecha_nacimiento" 
             id="age"
             placeholder="Edad" 
-            value={edad} 
-            onChange={(e)=> setEdad(e.target.value)}/>
+            value={fecha_nacimiento} 
+            onChange={(e)=> setFecha_nacimiento(e.target.value)}/>
             </div>
 
             <div className="inputs-options">   
             <span className="material-symbols-outlined icon-email">mail</span>      
             <input type="email" 
-            name="correo_electronico" 
-            id="email" placeholder="Example@gmail.com"
-            value={correo_electronico} 
-            onChange={(e)=> setCorreElectronico(e.target.value)}/>       
+            name="email" 
+            id="email_user" placeholder="Example@gmail.com"
+            value={email} 
+            onChange={(e)=> setEmail(e.target.value)}/>       
             </div>
             
             <div className="inputs-options">    

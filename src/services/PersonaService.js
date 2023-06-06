@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PERSONA_API_BASE_URL = "http://localhost:8090/api/v1/personas";
+const PERSONA_API_BASE_URL = "/api/v1/personas";
 const config = {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem('token') 
@@ -9,8 +9,9 @@ const config = {
 
 class PersonaService {
   async getPersonas() {
-    try {
+    try {      
       return await axios.get(PERSONA_API_BASE_URL, config);
+      
     } catch (error) {
       console.log(error);
     }
