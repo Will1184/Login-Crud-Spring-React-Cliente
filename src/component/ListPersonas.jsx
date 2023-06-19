@@ -19,7 +19,7 @@ const  ListPersonas=() =>{
     })   
     useEffect(()=>{
         getPersonas();
-    })   
+    },[])   
     const tokenExpired=()=>{                   
         setInterval(()=>{              
             let isLogged=localStorage.getItem("Token");        
@@ -55,7 +55,7 @@ const  ListPersonas=() =>{
 
 
         const table=()=>{
-            if(personas.length!==0){
+          
                 return<div className="data-table">            
                  <nav className="table-options">                                   
                     <ul className='btn-options'>                     
@@ -67,10 +67,7 @@ const  ListPersonas=() =>{
                               placeholder="Buscar" 
                               value={search} onChange={searcher}
                               />    
-                        </li>         
-                        <li>      
-                            {mostrar()}                      
-                        </li>                    
+                        </li>                           
                         <li>
                             <button className="btn-new">
                             <a href="crearpersona" >
@@ -126,22 +123,9 @@ const  ListPersonas=() =>{
         </table>
             </div>
                               
-            }
+            
         }
 
-
-        const mostrar=()=>{
-                const m=()=>{
-                    window.location.reload();
-                }
-                if(personas.length === 0){                                                        
-                return <button className='btn-mostrar' onClick={()=>{m()}}>
-                    <span className="material-symbols-outlined table-rows">
-                        table_rows
-                        </span>TABLA
-                       </button> 
-                }
-            }    
     
     const confirmation=()=>{
         deletePersona()
@@ -175,8 +159,7 @@ const  ListPersonas=() =>{
     }    
         return(
             <div>
-                 <Menu/>
-                 <>{mostrar()}</>
+                <Menu/>
                  <>{table()}</>                 
                
             </div>           

@@ -1,0 +1,41 @@
+
+.home-options{
+    display: flex;    
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+.home-options>.btn-optionsHome{
+    list-style-type: none;
+    float: left;
+    margin: 0;
+    margin-bottom: 4px;
+    padding: 0;
+    overflow: hidden;
+}
+.btn-ShowTables{
+    color:  rgb(52, 73, 94);
+    font-size: 1em;
+    text-align: center;
+    border: none;
+    background: white;
+    border-radius: 8px;
+    margin-right: 8px;
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+.btn-ShowTables:hover{
+    background:  rgb(80, 113, 147);
+    color: white;
+    transition: all 0.1s ease;
+}
+.btn-ShowTables:hover>span{
+    color: white;
+    transition: all 0.1s ease;
+}

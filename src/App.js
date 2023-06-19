@@ -1,11 +1,12 @@
 import React,{Fragment }  from 'react';
 import'./Styles/App.css';
 import { BrowserRouter as Router ,Route,Routes} from 'react-router-dom';
-import ListPersonas from './component/ListPersonas';
 import CrearPersona from './component/CrearPersona';
 import Login from './component/Login';
 import ProtectedRoutes from './component/ProtectedRoutes';
 import Options from './component/Options';
+import Home from './component/Home';
+import ListPersonas from './component/ListPersonas';
 
 
 
@@ -17,7 +18,8 @@ function App() {
        <Route path='/' element={<Login/>}/>                    
        <Route element={<ProtectedRoutes/>}>
        <Route path='/options' element={<Options/>}/>
-       <Route path='/home' element={<ListPersonas/>}/>         
+       <Route path='/home' element={<Home/>}/>   
+       <Route path='/futbolistas' element={<ListPersonas/>}/>         
        <Route path='/crearpersona' element={<CrearPersona/>}/>
        <Route path='/editPersona/:id' element={<CrearPersona/>}/>        
       </Route>
