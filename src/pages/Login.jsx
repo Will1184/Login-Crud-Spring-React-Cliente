@@ -13,12 +13,13 @@ export default function Login(){
     
     useEffect(()=>{
         modalLogin();
+        AuthService.userLogout();
         localStorage.removeItem("token"); 
         localStorage.removeItem("Token")
         localStorage.removeItem("email")
         localStorage.removeItem("username")
         localStorage.removeItem("role")   
-    })    
+    },[])    
     const onSubmit =(e) =>{
         e.preventDefault();        
         const userLog={username,password};

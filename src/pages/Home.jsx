@@ -1,14 +1,10 @@
-import React, {useState } from 'react'
+import React from 'react'
 import'../Styles/Home.css';
-import Menu from './Menu';
-import ListPersonas from './ListPersonas';
+import Menu from '../component/Menu';
 import { Link } from 'react-router-dom';
 
 const  Home=() =>{
-    const [showTables,setShowTables] = useState(0);
-
     const tables =()=>{
-        
             return<>
              <nav className="home-options">                                   
                     <ul className='btn-optionsHome'>                          

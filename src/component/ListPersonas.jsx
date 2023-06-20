@@ -70,7 +70,7 @@ const  ListPersonas=() =>{
                         </li>                           
                         <li>
                             <button className="btn-new">
-                            <a href="crearpersona" >
+                            <a href="newfutbolista" >
                                 <span className="material-symbols-outlined add">add
                                 </span>ADD
                             </a>
@@ -111,9 +111,9 @@ const  ListPersonas=() =>{
                         <td>{persona.telefono}</td>
                         <td>{persona.posicion}</td>
                         <td>                                                            
-                        <button className='modificar'><Link to={`/editPersona/${persona.id}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp; EDIT</Link ></button>
+                        <button className='modificar'><Link to={`/futbolista/${persona.id}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp; EDIT</Link ></button>
                         <button className='eliminar' onClick={()=> {setIdDelete(persona.id);setOpenDelete(true)}}><span className="material-symbols-outlined delete">delete_forever</span> DELETE</button>                           
-                        <button className='email'><a href="/crearpersona/:id"><span className="material-symbols-outlined mail">mail</span> SEND</a></button>
+                        <button className='email'><a href="/futbolista/:id"><span className="material-symbols-outlined mail">mail</span> SEND</a></button>
                         </td>                                                          
                     </tr>                                      
                 )

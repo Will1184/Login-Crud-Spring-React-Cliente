@@ -1,14 +1,12 @@
 import React,{Fragment }  from 'react';
 import'./Styles/App.css';
 import { BrowserRouter as Router ,Route,Routes} from 'react-router-dom';
-import CrearPersona from './component/CrearPersona';
-import Login from './component/Login';
+import Futbolista from './component/Futbolista';
+import Login from './pages/Login';
 import ProtectedRoutes from './component/ProtectedRoutes';
 import Options from './component/Options';
-import Home from './component/Home';
+import Home from './pages/Home';
 import ListPersonas from './component/ListPersonas';
-
-
 
 function App() {
   return (
@@ -20,8 +18,8 @@ function App() {
        <Route path='/options' element={<Options/>}/>
        <Route path='/home' element={<Home/>}/>   
        <Route path='/futbolistas' element={<ListPersonas/>}/>         
-       <Route path='/crearpersona' element={<CrearPersona/>}/>
-       <Route path='/editPersona/:id' element={<CrearPersona/>}/>        
+       <Route path='/newfutbolista' element={<Futbolista/>}/>
+       <Route path='/futbolista/:id' element={<Futbolista/>}/>        
       </Route>
        </Routes>             
       </Router>             
