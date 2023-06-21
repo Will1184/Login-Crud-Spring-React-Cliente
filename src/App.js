@@ -11,9 +11,9 @@ import ListPersonas from './component/ListPersonas';
 function App() {
   return (
     <Fragment>
-      <Router>       
         <HashRouter basename='/Login-Crud-Spring-React-Cliente'>
-        <Routes>
+      <Router>       
+      <Routes>
        <Route exact path='/' element={<Login/>}/>                    
        <Route element={<ProtectedRoutes/>}>
        <Route path='/options' element={<Options/>}/>
@@ -23,8 +23,8 @@ function App() {
        <Route path='/futbolista/:id' element={<Futbolista/>}/>        
       </Route>
        </Routes>
-        </HashRouter>             
       </Router>             
+        </HashRouter>             
     </Fragment>    
   );
 }
