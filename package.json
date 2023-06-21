@@ -2,7 +2,7 @@
   "name": "crud-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Will1184.github.io/Login-Crud-Spring-React-Cliente/",
+  "homepage": "https://Will1184.github.io/Login-Crud-Spring-React-Cliente",
   "proxy": "http://localhost:8090",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

@@ -12,7 +12,7 @@ function App() {
   return (
     <Fragment>
       <Router>       
-        <HashRouter basename='/'>
+        <HashRouter basename='/Login-Crud-Spring-React-Cliente'>
         <Routes>
        <Route exact path='/' element={<Login/>}/>                    
        <Route element={<ProtectedRoutes/>}>
