@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import'../Styles/CrearPersona.css';
+import'../Styles/Futbolista.css';
 import { useNavigate,useParams } from 'react-router-dom';
 import PersonaService from '../services/PersonaService';
 

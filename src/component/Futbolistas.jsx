@@ -5,21 +5,22 @@ import { CSVLink } from 'react-csv';
 import Menu from './Menu';
 
 
-const  ListPersonas=() =>{
+const  Futbolistas=() =>{
     const[personas, setPersonas] =useState([]);
     const[openDelete,setOpenDelete]=useState(false);
     const[optionDelete,setOptionDelete]=useState(false);    
-    const[idDelete,setIdDelete]=useState();    
-    const[search,setSearch]=useState("");    
-     
+    const[idDelete,setIdDelete]=useState();
+    const[search,setSearch]=useState("");
+    const[estateModal,setEstateModal]=useState(false);
     
     useEffect(()=>{
         confirmation();       
         tokenExpired();
-    })   
+    })
     useEffect(()=>{
         getPersonas();
-    },[])   
+    },[])
+ 
     const tokenExpired=()=>{                   
         setInterval(()=>{              
             let isLogged=localStorage.getItem("Token");        
@@ -34,12 +35,13 @@ const  ListPersonas=() =>{
             try {                        
                 const response = await PersonaService.getPersonas();
                 setPersonas(response.data);
-                console.log(response.data);
               } catch (error) {
                 console.log(error);                     
               }
         }
-        
+        const handlerClick=()=>{
+            setEstateModal(!estateModal)
+        }
         const searcher=(e)=>{
             setSearch(e.target.value)            
         }
@@ -51,15 +53,30 @@ const  ListPersonas=() =>{
             data.nombres.toLowerCase().includes(search.toLocaleLowerCase())
           );
         }
-        
-
+        const findFutbolista=(futbolista)=>{
+            let prueba=personas.filter(fut =>fut.id ===futbolista)
+            console.log(prueba)
+        }
+        const acctions=(futbolista)=>{
+            
+            if(estateModal){    
+                return<div id="tables-acctions show">
+                        <button className='modificar'><Link to={`/futbolista/${futbolista}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp;</Link ></button>
+                        <button className='eliminar' onClick={()=> {setIdDelete(futbolista);setOpenDelete(true)}}><span className="material-symbols-outlined delete">delete_forever</span></button>
+                        <button className='email'><a href="/futbolista/:id"><span className="material-symbols-outlined mail">mail</span></a></button>
+                    </div>
+            }
+            if(!estateModal){
+                return  
+            }
+        }
 
         const table=()=>{
           
                 return<div className="data-table">            
                  <nav className="table-options">                                   
                     <ul className='btn-options'>                     
-                        <li>                            
+                        <li className='input-busqueda'>                            
                         <input
                               type="text" 
                               name="busqueda" 
@@ -91,7 +108,7 @@ const  ListPersonas=() =>{
                     <th>ID</th>
                     <th>NOMBRES</th>                                
                     <th>APELLIDOS</th>
-                    <th>EDAD</th>
+                    <th>NACIMIENTO</th>
                     <th>EMAIL</th>
                     <th>TELEFONO</th>
                     <th>POSICION</th>
@@ -110,21 +127,18 @@ const  ListPersonas=() =>{
                         <td>{persona.email}</td>
                         <td>{persona.telefono}</td>
                         <td>{persona.posicion}</td>
-                        <td>                                                            
-                        <button className='modificar'><Link to={`/futbolista/${persona.id}`}><span className="material-symbols-outlined edit">edit</span>&nbsp;&nbsp; EDIT</Link ></button>
-                        <button className='eliminar' onClick={()=> {setIdDelete(persona.id);setOpenDelete(true)}}><span className="material-symbols-outlined delete">delete_forever</span> DELETE</button>                           
-                        <button className='email'><a href="/futbolista/:id"><span className="material-symbols-outlined mail">mail</span> SEND</a></button>
+                        <td> 
+                        <span className="material-symbols-outlined btn-expand" onClick={()=>{acctions(persona.id);handlerClick()}}>expand_more</span>
+                        <>{acctions()}</>
                         </td>                                                          
-                    </tr>                                      
+                    </tr>                                     
                 )
             }                              
             </tbody>       
             {confirmation()}                                                                      
         </table>
-            </div>
-                              
-            
-        }
+    </div>
+}
 
     
     const confirmation=()=>{
@@ -165,4 +179,4 @@ const  ListPersonas=() =>{
             </div>           
         )
     }
-export default ListPersonas;
+export default Futbolistas;

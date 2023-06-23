@@ -141,14 +141,14 @@
       top: 50%;
       transform: translateY(-40%);
       color:  rgb(212, 63, 63);
-      font-size: 25px;
+
   }
   .alert-login .msg{
+    color: rgb(233, 69, 69);
+    padding: 0 20px;
+    font-size: 18px;
     margin: 0;
     margin-left: 10px;
-      padding: 0 20px;
-      font-size: 18px;
-      color: rgb(233, 69, 69);
       
   }
   .alert-login.show > .close-btn{
@@ -169,3 +169,30 @@
       line-height: 40px;
   }
   
+  @media (max-width: 600px) {
+  .principal-login{
+          margin-top:50%;
+    }
+    .alert-login{  
+        background: rgb(245, 245, 245);
+        padding: 10px 15px;
+        min-width: 250px;
+    }
+    
+    #error.material-symbols-outlined{
+        font-size: 22px;
+        top: 45%;
+        left: 10px;
+    }
+    .alert-login .msg{
+        font-size: 14px;
+        margin: 0;
+        margin: 0px;
+        padding: 0;
+        padding-left: 30px;
+        padding-right: 60px;
+    }
+    .alert-login.show > .close-btn{
+        padding: 0px 10px;
+    }
+}

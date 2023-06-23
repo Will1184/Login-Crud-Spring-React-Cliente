@@ -195,7 +195,7 @@ Input de busqueda */
     margin: 0;
     margin-left: 20px;
     margin-bottom: 10px;
-}
+}   
 .table-options>.btn-options{
     list-style-type: none;
     float: left;
@@ -389,23 +389,27 @@ de datos */
 .table{        
     border: 2px solid rgb(52, 73, 94);
     box-shadow: 1px 1px 15px 10px rgb(199, 204, 204);
+    border-collapse: collapse ; 
     margin: auto;
     margin-top: 0;
-    width:auto;
-    border-collapse: collapse ; 
+    table-layout: fixed;
+    width:900px;
  }
 caption{
     padding: 0.5em;
 }
 th, td{
-    padding: 10px;
+    padding: 5px;
     text-align: center;
-    vertical-align: middle;     
+    vertical-align: middle;   
+}
+th{
+    font-size: 1.4em;
 }
 thead{
     background-color:rgb(52, 73, 94);
     color: whitesmoke;
-    font-size: 100%;
+    font-size: 0.7em;
     border-bottom: 4px solid rgb(32, 45, 56) ;
 }
 tr:nth-child(even){
@@ -413,17 +417,27 @@ tr:nth-child(even){
     font-size: 100%;
 }
 td{
+    font-size: 0.9em;
      border-bottom: 2px solid  rgb(52, 73, 94);
 }
-
+.btn-expand{
+    color: rgb(41, 98, 155);
+    font-weight: bold;
+    cursor: pointer;
+}
+.modificar,
+.eliminar,
+.email{
+    background-color:white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    height: 40px;
+    margin-bottom: 3px;
+    width: 70px;
+}
 .modificar{
-   width: 70px;
-   height: 50px;
-   background-color:white ;
-   border: none;
-   border-radius: 8px;
-   color: rgb(80, 113, 147);
-   font-weight: bold;
+    color: rgb(80, 113, 147);
 }
 .modificar>a{
     color:rgb(80, 113, 147);
@@ -431,43 +445,28 @@ td{
     font-weight: bold;
 }
 .eliminar{
-    width: 70px;
-    height: 50px;
     color: rgb(199, 23, 23);
-    background-color:white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
  }
  .email{
-    width: 70px;
-    height: 50px;
     color: rgb(147, 147, 147);
-    background-color:white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
  }
  .email>a{
      color: rgb(147, 147, 147);
      text-decoration: none;
      font-weight: bold;
  }
-
 .material-symbols-outlined.delete{
-    font-size: 1.5em;
     color:  rgb(199, 23, 23);
-    cursor: pointer;
+    position: relative;
+    left: -1px;
 }
 .material-symbols-outlined.mail{
-    font-size: 1.5em;
     color:  rgb(145, 145, 145);
-    cursor: pointer;
 }
 .material-symbols-outlined.edit{
-    font-size: 1.5em;
     color: rgb(80, 113, 147);
-    cursor: pointer;
+    position: relative;
+    left: 5px;
 }
 .modificar:hover{
     border:none;
@@ -767,95 +766,39 @@ flex-direction: row;
     border-radius: 3px;
 }
 
-/* DISEÑO DEL DATATABLE JQUERY */
-/* label de la cantidad de datos a mostrar en la paginacion */
-div.dataTables_wrapper div.dataTables_length label {
-    font-weight: normal;
-    text-align: left;
-    white-space: nowrap;
-    color: rgb(97, 97, 97);  
-    font-size: 1.05em;
-  }
-  /* Input select de la cantidad de datos a mostrar en la paginacion */
-  div.dataTables_wrapper div.dataTables_length select {
-    width: 75px;
-    margin: 0px 10px 10px 10px;
-    display: inline-block;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    color: rgb(97, 97, 97);    
-  }
-  /*El numero de elementos en la paginacion */
-  div.dataTables_wrapper div.dataTables_info {
-    margin: 0px;       
-    margin-top: 5px;
-    font-size: 1em;
-    color:whitesmoke;
-    background: rgb(101, 101, 102);
-    border-radius: 3px;
-    padding: 4px;
-    width: 110px;
-    opacity: 0.7;
-  }
-  /* Botones de la paginacion */
- div.dataTables_wrapper div.dataTables_paginate {
-    margin: 0;
-    position: relative;
-    top: -38.5px;
-    white-space: nowrap;
-    text-align: right;
-    color: rgb(97, 97, 97);
-    font-size: 1em;
-  }
-  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    margin: 2px 0;
-    white-space: nowrap;  
-  }
-  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.previous,div.dataTables_wrapper div.dataTables_paginate a.paginate_button.next {
-     background:rgb(70, 104, 138);
-     color:whitesmoke;
-     border-radius: 5px;   
-     padding: 8px;
-     margin: 0px 10px;   
-  }
-  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.previous:hover,div.dataTables_wrapper div.dataTables_paginate a.paginate_button.next:hover{
-    border:2px solid rgb(70, 104, 138);
-    background: whitesmoke;
-    color: rgb(80, 80, 80);
-    cursor: pointer;
-  }
-  div.dataTables_wrapper div.dataTables_paginate a.paginate_button.current{
-    background:rgb(70, 104, 138);
-    color:whitesmoke;
-    border-radius: 6px;   
-    padding: 2px 6px;
-    margin: 0px 3px;   
-    cursor: pointer;
-  }
-  div.dataTables_wrapper div.dataTables_paginate a.paginate_button{
-    border:1px solid rgb(70, 104, 138);
-    background: whitesmoke;
-    color: rgb(80, 80, 80);
-    border-radius: 6px;   
-    padding: 2px 6px;   
-    margin: 0px 3px;   
-    cursor: pointer;
-  }
-  div.dataTables_wrapper div.dataTables_paginate a.paginate_button:hover{
-    background:rgb(70, 104, 138);
-    color:whitesmoke;  
-  }
-  div.dataTables_wrapper div.dataTables_processing {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    margin-left: -100px;
-    margin-top: -26px;
-    text-align: center;
-    padding: 1em 0;  
-  }
   footer{
     background: cadetblue;
   }
+  /* Estilos responsive */
+@media only screen and (max-width: 600px) {
+    .digitalClock{
+        display: none;
+    }
+    .data-table{
+        flex-direction: column;
+    }
+    .table-options{
+        width: 400px;
+        
+    }
+    .btn-options{
+        width: 400px;
+        display: flex;
+    }
+    .input-busqueda{
+        width: 110px;
+        margin-top: 15px;
+    }
+    #search{
+        width: 100px;
+    }
+    #search:focus,
+    #search:hover{
+    outline: none;
+    width: 100px;
+    transition: all 0.2s ease;}
+    .btn-new{
+        margin-left: 10px;
+    }
+
+}
