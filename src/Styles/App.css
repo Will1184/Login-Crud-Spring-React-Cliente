@@ -418,10 +418,12 @@ tr:nth-child(even){
 }
 td{
     font-size: 0.9em;
-     border-bottom: 2px solid  rgb(52, 73, 94);
+    border-bottom: 2px solid  rgb(52, 73, 94);
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .btn-expand{
-    color: rgb(41, 98, 155);
+    color:  rgb(52, 73, 94);
     font-weight: bold;
     cursor: pointer;
 }
@@ -799,6 +801,18 @@ flex-direction: row;
     transition: all 0.2s ease;}
     .btn-new{
         margin-left: 10px;
+    }
+    .table{
+        width: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .table th,
+    .table td{
+        display: flex;
+        flex-direction: column;
+        height: 70px;
     }
 
 }

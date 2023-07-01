@@ -20,7 +20,7 @@
  
 ------------
 
-##### Tecnologias que usa
+##### Tecnologias que usa y Librerias que usa
 - Node js Version 15.14
 - React 
  -  "@testing-library/jest-dom": "^5.16.5",

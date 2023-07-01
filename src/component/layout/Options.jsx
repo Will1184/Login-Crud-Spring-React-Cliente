@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Menu from './Menu';
-import '../Styles/Options.css'
-import AuthService from '../services/AuthService';
+import '../../styles/Options.css'
+import AuthService from '../../services/AuthService';
 const Options=()=>{
     const[oldpassword,setOldPass]=useState("");
     const[newpassword,setNewPass]=useState("");

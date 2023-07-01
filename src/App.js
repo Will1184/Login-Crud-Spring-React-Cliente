@@ -1,14 +1,16 @@
 import React,{Fragment }  from 'react';
-import'./Styles/App.css';
-import { BrowserRouter as Router 
+import'./styles/App.css';
+import { 
+  BrowserRouter as Router 
   ,Route
   ,Routes} from 'react-router-dom';
-import Futbolista from './component/Futbolista';
-import Login from './pages/Login';
-import ProtectedRoutes from './component/ProtectedRoutes';
-import Options from './component/Options';
-import Home from './pages/Home';
-import Futbolistas from './component/Futbolistas';
+
+import Login from './component/pages/Login';
+import ProtectedRoutes from './component/protectedroutes/ProtectedRoutes';
+import Options from './component/layout/Options';
+import Home from './component/pages/Home';
+import Futbolistas from './component/TableFutbolistas';
+import FutbolistaDetails from './component/pages/FutbolistaDetails';
 
 function App() {
   return (
@@ -19,10 +21,14 @@ function App() {
        <Route exact path='/' element={<Login/>}/>                    
        <Route element={<ProtectedRoutes/>}>
        <Route path='/options' element={<Options/>}/>
-       <Route path='/home' element={<Home/>}/>   
-       <Route path='/futbolistas' element={<Futbolistas/>}/>         
-       <Route path='/newfutbolista' element={<Futbolista/>}/>
-       <Route path='/futbolista/:id' element={<Futbolista/>}/>        
+       <Route path='/home' element={<Home/>}/>
+       <Route path='/futbolistas'  element={
+            <React.Fragment>
+              <Futbolistas />
+            </React.Fragment>
+          }/>         
+       <Route path='/createfutbolista' element={<FutbolistaDetails/>}/>
+       <Route path='/editfutbolista/:id' element={<FutbolistaDetails/>}/>        
       </Route>
        </Routes>
       </Router>                       

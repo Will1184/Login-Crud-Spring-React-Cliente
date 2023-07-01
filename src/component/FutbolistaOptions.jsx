@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import'../Styles/Futbolista.css';
+import'../styles/Futbolista.css';
 import { useNavigate,useParams } from 'react-router-dom';
 import PersonaService from '../services/PersonaService';
 
 
-export default function CrearPersona(){
+export default function Futbolista(){
 
     const[posicion,setPosicion]=useState("");
     const[nombres,setNombres]=useState("");
@@ -52,14 +52,14 @@ export default function CrearPersona(){
             if(id){
                 PersonaService.updatePersona(id,persona).then((response)=>{
                     console.log(response.data)
-                    navigate("/home");
+                    navigate("/futbolistas");
                 }).catch(error => {
                     console.log(error)
                 })
             }else{
                 PersonaService.createPersona(persona).then((response)=>{
                     console.log(response.data)
-                    navigate("/home")
+                    navigate("/futbolistas")
                 }).catch(error => {
                     console.log(error)
                 })

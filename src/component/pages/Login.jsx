@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import AuthService from '../services/AuthService';
-import'../Styles/Login.css';
+import AuthService from '../../services/AuthService';
+import'../../styles/Login.css';
 
 
 export default function Login(){
