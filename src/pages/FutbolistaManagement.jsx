@@ -1,5 +1,5 @@
 import React from 'react'
-import TableFutbolistas from '../TableFutbolistas';
+import TableFutbolistas from '../component/TableFutbolistas';
 
 const FutbolistaManagement=()=>{
     return(
