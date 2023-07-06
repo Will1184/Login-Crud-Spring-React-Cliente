@@ -1,5 +1,5 @@
 import React from 'react'
-import CFutbolista from '../FutbolistaOptions';
+import CFutbolista from '../component/FutbolistaOptions';
 const Editar=()=>{
     return(
         <CFutbolista/>

@@ -5,12 +5,12 @@ import {
   ,Route
   ,Routes} from 'react-router-dom';
 
-import Login from './component/pages/Login';
+import Login from './layout/Login';
 import ProtectedRoutes from './component/protectedroutes/ProtectedRoutes';
-import Options from './component/layout/Options';
-import Home from './component/pages/Home';
+import Options from './layout/Options';
+import Home from './layout/Home';
 import Futbolistas from './component/TableFutbolistas';
-import FutbolistaDetails from './component/pages/FutbolistaDetails';
+import FutbolistaDetails from './pages/FutbolistaDetails';
 
 function App() {
   return (
@@ -22,11 +22,7 @@ function App() {
        <Route element={<ProtectedRoutes/>}>
        <Route path='/options' element={<Options/>}/>
        <Route path='/home' element={<Home/>}/>
-       <Route path='/futbolistas'  element={
-            <React.Fragment>
-              <Futbolistas />
-            </React.Fragment>
-          }/>         
+       <Route path='/futbolistas' element={<Futbolistas />}/>
        <Route path='/createfutbolista' element={<FutbolistaDetails/>}/>
        <Route path='/editfutbolista/:id' element={<FutbolistaDetails/>}/>        
       </Route>

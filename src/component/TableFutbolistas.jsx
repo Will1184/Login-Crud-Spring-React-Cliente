@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
 import PersonaService from '../services/PersonaService';
-import Menu from './layout/Menu';
+import Menu from '../layout/Menu';
 
 const TableFutbolistas = React.memo(() => {
 

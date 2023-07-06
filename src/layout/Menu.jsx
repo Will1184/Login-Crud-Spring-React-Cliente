@@ -1,7 +1,6 @@
 import React,{ Fragment, useEffect, useState} from "react";
 import { Link} from "react-router-dom";
-import Reloj from "../shared/Reloj";
-import AuthService from "../../services/AuthService";
+import AuthService from "../services/AuthService";
 
 const Menu =()=>{    
     const [openMenu,setOpenMenu]=useState(false)     
@@ -89,7 +88,7 @@ const Menu =()=>{
             <nav className="navegacion">            
             <ul id="nav-options">                                                       
                          <li>
-                         <Reloj/>
+                
                          </li>                                                   
             </ul>
                 <ul id="nav-options">                        
