@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
-import PersonaService from '../services/PersonaService';
 import Menu from '../layout/Menu';
+import FutbolistaService from '../services/FutbolistaService';
 
 const TableFutbolistas = React.memo(() => {
 
@@ -70,7 +70,7 @@ const TableFutbolistas = React.memo(() => {
 
   const deletePersona = () => {
     if (optionDelete) {
-      PersonaService.deleteEmployee(idDelete)
+      FutbolistaService.deleteFutbolista(idDelete)
         .then((response) => {
           setOptionDelete(false);
         })
@@ -159,7 +159,7 @@ const TableFutbolistas = React.memo(() => {
               <td>{futbolista.id}</td>
               <td>{futbolista.nombres}</td>
               <td>{futbolista.apellidos}</td>
-              <td>{futbolista.fecha_nacimiento}</td>
+              <td>{futbolista.fechaNacimiento}</td>
               <td>{futbolista.email}</td>
               <td>{futbolista.telefono}</td>
               <td>{futbolista.posicion}</td>
@@ -193,9 +193,9 @@ const TableFutbolistas = React.memo(() => {
             },300000);
     }
 
-    const getPersonas = async () => {           
+    const findAllFutbolistas = async () => {           
             try {                        
-                const response = await PersonaService.getPersonas();
+                const response = await FutbolistaService.findAllFutbolistas();
                 setFutbolistas(response.data);
               } catch (error) {
                 console.log(error);                     
@@ -207,7 +207,7 @@ const TableFutbolistas = React.memo(() => {
         tokenExpired();
     })
     useEffect(()=>{
-        getPersonas();
+        findAllFutbolistas();
     },[])
 
   return (

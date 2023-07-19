@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import'../styles/Futbolista.css';
 import { useNavigate,useParams } from 'react-router-dom';
-import PersonaService from '../services/PersonaService';
+import FutbolistaService from '../services/FutbolistaService';
 
 
 export default function Futbolista(){
@@ -9,7 +9,7 @@ export default function Futbolista(){
     const[posicion,setPosicion]=useState("");
     const[nombres,setNombres]=useState("");
     const[apellidos,setApellidos]=useState("");
-    const[fecha_nacimiento,setFecha_nacimiento]=useState("");
+    const[fechaNacimiento,setFechaNacimiento]=useState("");
     const[email,setEmail]=useState("");
     const[telefono,setTelefono]=useState();
     const {id}=useParams("");
@@ -18,11 +18,11 @@ export default function Futbolista(){
     
     useEffect(() => {
         if (id) {
-          PersonaService.getPersonaById(id)
+          FutbolistaService.findFutbolistaById(id)
             .then((response) => {
               setNombres(response.data.nombres);
               setApellidos(response.data.apellidos);            
-              setFecha_nacimiento(response.data.fecha_nacimiento);
+              setFechaNacimiento(response.data.fechaNacimiento);
               setEmail(response.data.email);
               setTelefono(response.data.telefono);
               setPosicion(response.data.posicion);
@@ -47,17 +47,17 @@ export default function Futbolista(){
     }
     const onSubmit=(e)=>{        
         e.preventDefault();
-        const persona={nombres,apellidos,fecha_nacimiento,email,telefono,posicion};
+        const persona={nombres,apellidos,fechaNacimiento,email,telefono,posicion};
             
             if(id){
-                PersonaService.updatePersona(id,persona).then((response)=>{
+                FutbolistaService.updateFutbolista(id,persona).then((response)=>{
                     console.log(response.data)
                     navigate("/futbolistas");
                 }).catch(error => {
                     console.log(error)
                 })
             }else{
-                PersonaService.createPersona(persona).then((response)=>{
+                FutbolistaService.createFutbolista(persona).then((response)=>{
                     console.log(response.data)
                     navigate("/futbolistas")
                 }).catch(error => {
@@ -93,11 +93,11 @@ export default function Futbolista(){
             <div className="inputs-options">
             <span class="material-symbols-outlined icon-edad">123</span>
             <input type="date" 
-            name="fecha_nacimiento" 
+            name="fechaNacimiento" 
             id="age"
             placeholder="Edad" 
-            value={fecha_nacimiento} 
-            onChange={(e)=> setFecha_nacimiento(e.target.value)}/>
+            value={fechaNacimiento} 
+            onChange={(e)=> setFechaNacimiento(e.target.value)}/>
             </div>
 
             <div className="inputs-options">   
