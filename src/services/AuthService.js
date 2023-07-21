@@ -17,8 +17,7 @@ class AuthService {
     localStorage.setItem('username', data.username);
     localStorage.setItem('email', data.email);
     localStorage.setItem('role', data.role);
-    }   
-
+    }
      registerUser(user){
         return axios.post(LOGIN_API_BASE_URL+"register",user)
      }

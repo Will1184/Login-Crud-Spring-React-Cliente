@@ -1,35 +1,43 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { 
+  Fragment,
+  useEffect,
+  useState } from 'react'
 import Menu from './Menu';
 import '../styles/Options.css'
 import AuthService from '../services/AuthService';
+import UserService from '../services/UserService';
+
 const Options=()=>{
     const[oldpassword,setOldPass]=useState("");
     const[newpassword,setNewPass]=useState("");
     const[confirmPass,setConfirmPass]=useState("");
 
-    const[newemail,setChangeMail]=useState("");
+    const[newEmail,setChangeMail]=useState("");
     const[passEmail,setPassEmail]=useState("");
     
     const[firstname,setFirstName]=useState("");
     const[lastname,setLastName]=useState("");
     const[email,setEmail]=useState("");
-    const[username,setUser]=useState("");
-    const[password,setPass]=useState("");  
+    const[username,setUsername]=useState("");
+    const[password,setPass]=useState("");
+
+    const[newUsername,setNewUsername]=useState()
 
     const[modalPass,setModalPass]=useState(false);
-    const[modalMail,setModalMail]=useState(false);
+    const[modalEmail,setModalEmail]=useState(false);
     const[modalUser,setModalUser]=useState(false);
+    const[modalUsername,setModalUsername]=useState(false);
     const[modalOptions,setModalOptions]=useState();
     const[numberModal,setNumberModal]=useState();
 
-    const onSubmitPass =(e) =>{
+
+    const ChangePasswordForm =(e) =>{
       e.preventDefault();
       let username=localStorage.getItem('username');
       const user={username,oldpassword,newpassword};
       if(newpassword!==oldpassword){
         if (newpassword===confirmPass){
-          
-          AuthService.changePass(user).then((response)=>{
+          UserService.changePass(user).then((response)=>{
             console.log(response.data);
             setModalOptions(2);
             setNumberModal("Password Cambiado");
@@ -38,7 +46,6 @@ const Options=()=>{
             setModalOptions(true);
             setNumberModal("Datos Invalidos");
           })
-
         }else{
           console.log("Las Contraseñas Nuevas No Coinciden");
           setModalOptions(1);
@@ -50,19 +57,39 @@ const Options=()=>{
         setNumberModal("La Contraseña Debe Ser Diferente Al Anterior");
       }   
     }
+
+    const ChangeUsernameForm =(e) =>{
+      e.preventDefault();
+      let username=localStorage.getItem('username');
+      const user={username,password,newUsername};
+      if(newUsername!==username){
+          UserService.changeUsername(user).then((response)=>{
+            console.log(response.data);
+            localStorage.setItem('username',newUsername);  
+            setModalOptions(2);
+            setNumberModal("Username Cambiado");
+          }).catch(error=>{
+            console.log(error);           
+            setModalOptions(true);
+            setNumberModal("Datos Invalidos");
+          })
+        }else{
+        console.log("El Username Debe Ser Diferente Al Anterior")
+        setModalOptions(1);
+        setNumberModal("La Username Debe Ser Diferente Al Anterior");
+      }   
+    }
     
-    
-    const onSubmitMail =(e) =>{
+    const ChangeEmailForm =(e) =>{
       e.preventDefault();      
       let oldMail=localStorage.getItem('email');
       let username=localStorage.getItem('username');    
       let password=passEmail;
-      const user={username,password,newemail};
-      if(oldMail!==newemail){        
-       
-        AuthService.changeEmail(user).then((response)=>{
+      const user={username,password,newEmail};
+      if(oldMail!==newEmail){        
+        UserService.changeEmail(user).then((response)=>{
           console.log(response.data);     
-          localStorage.setItem('email',newemail);  
+          localStorage.setItem('email',newEmail);  
           setModalOptions(2);
           setNumberModal("Email Cambiado");
         }).catch(error=>{
@@ -76,12 +103,10 @@ const Options=()=>{
       
     }
     
-    const onSubmitUser =(e) =>{
+    const CreateUserForm = (e) =>{
       e.preventDefault();
       let newUser={firstname,lastname,email,username,password};
-      console.log(newUser.firstname)
       if(newUser.firstname!==""&&newUser.lastname!==""&&newUser.email!==""&&newUser.username!==""&&newUser.password!==""){
-
         AuthService.registerUser(newUser).then((response)=>{
           console.log(response.data);
           setModalOptions(2);
@@ -89,7 +114,6 @@ const Options=()=>{
         }).catch(error=>{
           console.log(error);
         })
-
       }else{
         console.log('El formulario contiene datos vacios');
         setModalOptions(1);
@@ -97,6 +121,33 @@ const Options=()=>{
       }
 
     }
+
+    const toggleModalPass = () => {
+      setModalPass((prevModalPass) => !prevModalPass);
+      setModalEmail(false);
+      setModalUser(false);
+      setModalUsername(false)
+    };
+
+    const toggleModalEmail = () => {
+      setModalEmail((prevModalPass) => !prevModalPass);
+      setModalPass(false);
+      setModalUser(false);
+      setModalUsername(false)
+    };
+
+    const toggleModalUser = () => {
+      setModalUser((prevModalPass) => !prevModalPass);
+      setModalEmail(false);
+      setModalPass(false);
+      setModalUsername(false)
+    };
+    const toggleModalUserName = () => {
+      setModalUsername((prevModalPass) => !prevModalPass);
+      setModalUser(false)
+      setModalEmail(false);
+      setModalPass(false);
+    };
 
     const userInformation=()=>{
         let username=localStorage.getItem("username");
@@ -138,17 +189,57 @@ const Options=()=>{
         </div>
     }
   }
+  const pass=()=>{
+    return<div className='modal-pass'>
+    <form  onSubmit={(e)=>ChangePasswordForm(e)} method='post' className='form-options'>
+    <div className="inputs-options">
+      <span className="material-symbols-outlined icon-pass">key</span>
+      <input
+        type="password" 
+        name="oldpassword" 
+        id="old-password"
+        placeholder='Old Password'
+        value={oldpassword} onChange={(e)=>setOldPass(e.target.value)}
+        />
+      </div>
+      <div className="inputs-options">
+      <span className="material-symbols-outlined icon-pass">key</span>
+      <input
+        type="password" 
+        name="newpassword" 
+        id="new-password"
+        placeholder='New Password'
+        value={newpassword} onChange={(e)=>setNewPass(e.target.value)}
+        />
+      </div>
+      <div className='inputs-options'>
+      <span className="material-symbols-outlined icon-pass">key</span>
+        <input
+        type="password" 
+        name="confirmPass" 
+        id="repeat-password"
+        placeholder='Repeat password'
+        value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)}
+        />
+      </div>     
+      <div className='btns-options'>
+      <button type="submit" id="enviar-options" >SAVE</button>            
+      <button  id="cancel-options" onClick={()=>{setModalPass(false)}}>EXIT </button>            
+        </div>                    
+  </form>                
+</div>
+  }
     const optionSelected=()=>{
         if(modalPass){
             return <div className='modal-pass'>
-                <form onSubmit={(e)=>onSubmitPass(e)} method='post' className='form-options'>
+                <form  onSubmit={(e)=>ChangePasswordForm(e)} method='post' className='form-options'>
                 <div className="inputs-options">
                   <span className="material-symbols-outlined icon-pass">key</span>
                   <input
                     type="password" 
                     name="oldpassword" 
                     id="old-password"
-                    placeholder='Old Password'
+                    placeholder='Password'
                     value={oldpassword} onChange={(e)=>setOldPass(e.target.value)}
                     />
                   </div>
@@ -168,7 +259,7 @@ const Options=()=>{
                     type="password" 
                     name="confirmPass" 
                     id="repeat-password"
-                    placeholder='Repeat password'
+                    placeholder='Repeat Password'
                     value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)}
                     />
                   </div>     
@@ -180,9 +271,9 @@ const Options=()=>{
             </div>
         }
 
-        if(modalMail){
+        if(modalEmail){
               return <div className='modal-pass'>
-            <form onSubmit={(e)=>onSubmitMail(e)} method='post' className='form-options'>
+            <form  onSubmit={(e)=>ChangeEmailForm(e)} method='post' className='form-options'>
             <div className="inputs-options">
                   <span className="material-symbols-outlined icon-pass">key</span>
                   <input
@@ -200,12 +291,12 @@ const Options=()=>{
                 name="new-email" 
                 id="new-email"
                 placeholder='New Email'
-                value={newemail} onChange={(e)=>setChangeMail(e.target.value)}
+                value={newEmail} onChange={(e)=>setChangeMail(e.target.value)}
                 />
               </div>            
               <div className='btns-options'>
               <button type="submit" id="enviar-options" >SAVE</button>            
-              <button  id="cancel-options" onClick={()=>{setModalMail(false)}}>EXIT </button>            
+              <button  id="cancel-options" onClick={()=>{setModalEmail(false)}}>EXIT </button>            
               </div>
             </form>
         </div>
@@ -213,7 +304,7 @@ const Options=()=>{
 
         if(modalUser){
             return<div className='modal-pass'>
-            <form onSubmit={(e)=>onSubmitUser(e)} method='post' className='form-options'>
+            <form  onSubmit={(e)=>CreateUserForm(e)} method='post' className='form-options'>
             <div className="inputs-options">
               <span className="material-symbols-outlined icon-person">person</span>
               <input
@@ -241,7 +332,7 @@ const Options=()=>{
                 name="username" 
                 id="username"
                 placeholder='Username'
-                value={username} onChange={(e)=>setUser(e.target.value)}
+                value={username} onChange={(e)=>setUsername(e.target.value)}
                 />
               </div>
               <div className="inputs-options">
@@ -271,6 +362,36 @@ const Options=()=>{
             </form>
         </div>
         }
+        if(modalUsername){
+          return <div className='modal-pass'>
+          <form  onSubmit={(e)=>ChangeUsernameForm(e)} method='post' className='form-options'>
+          <div className="inputs-options">
+            <span className="material-symbols-outlined icon-pass">key</span>
+            <input
+              type="text" 
+              name="newUsername" 
+              id="new-username"
+              placeholder='Update Username'
+              value={newUsername} onChange={(e)=>setNewUsername(e.target.value)}
+              />
+            </div>
+            <div className="inputs-options">
+            <span className="material-symbols-outlined icon-pass">key</span>
+            <input
+              type="password" 
+              name="password" 
+              id="password"
+              placeholder='Password '
+              value={password} onChange={(e)=>setPass(e.target.value)}
+              />
+            </div>
+            <div className='btns-options'>
+            <button type="submit" id="enviar-options" >SAVE</button>            
+            <button  id="cancel-options" onClick={()=>{setModalUsername(false)}}>EXIT </button>            
+              </div>                    
+        </form>                
+      </div>
+        }
     }
 
     return(
@@ -279,25 +400,29 @@ const Options=()=>{
             <div id='options-principal'>
                {userInformation()}
                 <div className='list-options'>
-                    <div className='options' onClick={()=>{setModalPass(true);setModalMail(false);setModalUser(false)}}>
+                    <div className='options' onClick={()=>{toggleModalPass();pass()}}>
                     <span className="material-symbols-outlined change-password">
                         password
                     </span> &nbsp; Cambiar Contraseña 
                     </div>
-                    <div className='options'  onClick={()=>{setModalPass(false);setModalMail(true);setModalUser(false)}}>
+                    <div className='options'  onClick={()=>{toggleModalEmail();}}>
                     <span className="material-symbols-outlined change-mail">
                         mail
                         </span> &nbsp; Cambiar Correo
+                    </div>                
+                    <div className='options'  onClick={()=>{toggleModalUserName();}}>
+                    <span className="material-symbols-outlined new-user">
+                        person</span> &nbsp; Cambiar Username
                     </div>
-                    <div className='options'  onClick={()=>{setModalPass(false);setModalMail(false);setModalUser(true)}}>
+                    <div className='options'  onClick={()=>{toggleModalUser();}}>
                     <span className="material-symbols-outlined new-user">
                         person_add</span> &nbsp; Crear Nuevo usuario
                     </div>
                 </div>
-                {optionSelected()}
-                {modal()}
+                  {optionSelected()}
+                  {modal()}
             </div>
-        </Fragment>        
+        </Fragment>
     );
 }
 export default Options;

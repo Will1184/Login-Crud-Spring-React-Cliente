@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 a:link, a:visited, a:active {
     text-decoration:none;
 }

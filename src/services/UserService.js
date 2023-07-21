@@ -22,19 +22,19 @@ class UserService {
       }
 
      changePass(user){
-        return axios.post(LOGIN_API_BASE_URL+"/changePassword",user, HeaderConfig.config)
+        return axios.post(USER_API_BASE_URL+"/changePassword",user, HeaderConfig.config)
       }
 
       changeUsername(user){
-        return axios.post(LOGIN_API_BASE_URL+"/changeUsername",user, HeaderConfig.config)
+        return axios.post(USER_API_BASE_URL+"/changeUsername",user, HeaderConfig.config)
       }
 
        changeRol(user){
-        return axios.post(LOGIN_API_BASE_URL+"/changeRol",user, HeaderConfig.config)
+        return axios.post(USER_API_BASE_URL+"/changeRol",user, HeaderConfig.config)
       }
      
       deleteUser(user){
-        return axios.post(LOGIN_API_BASE_URL,user, HeaderConfig.config)
+        return axios.post(USER_API_BASE_URL,user, HeaderConfig.config)
       }
 }
 
